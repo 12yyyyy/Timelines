@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="styles.css">
+<header>
+    <h1>SCSS Animation Timeline Mixins </h1>
+    <p>Create time based CSS animations (not percentages)</p>
+    <div class="hearts">
+        <span>
+            <i>💜💜💜</i>
+            <i>❤️❤️❤️</i>
+            <i>🧡🧡🧡</i>
+            <i>💛💛💛</i>
+            <i>💚💚💚</i>
+            <i>💙💙💙</i>
+            <i>💜💜💜</i> 
+        </span>
+    </div>     
+</header>
+<pre>
+<strong>SCSS</strong>
+body {
+    @include animation-timeline {
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        
+        @include tween(0s, (background-color: blueviolet, color: blueviolet));        
+        @include tween(3s, (background-color: red, color: red));
+        @include tween(3s, (background-color: orange, color: orange));
+        @include tween(3s, (background-color: gold, color: gold));
+        @include tween(3s, (background-color: green, color: green));
+        @include tween(3s, (background-color: blue, color: blue));
+        @include tween(3s, (background-color: blueviolet, color: blueviolet));
+    }
+}
+</pre>
+<pre>
+<strong>CSS</strong>
+body {
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-name: u33q65pnv;
+    animation-duration: 21s;
+}
+
+@keyframes u33q65pnv {
+  0% { background-color: blueviolet; color: blueviolet; }
+  16.6666666667% { background-color: red; color: red; }
+  33.3333333333% { background-color: orange; color: orange; }
+  50% { background-color: gold; color: gold; }
+  66.6666666667% { background-color: green; color: green; }
+  83.3333333333% { background-color: blue; color: blue; }
+  100% { background-color: blueviolet; color: blueviolet; }
+}
+</pre>
+<pre>
+<strong>The Mixins</strong>
+<span>//  global context flags using wierd ✌ names to minimize 
+//  chance of naming conflicts with other scss variables</span>
+$✌--animation-timeline-duration: null;
+$✌--animation-timeline-tweens  : null;
+
+<span>//  mixin to create an animation context for nested tweens
+//  used to calculate the total duration of the animation
+//  converting each tween delay into percentages </span>
+@mixin animation-timeline($name: unique-id()) {
+
+    <span>//  global context flag to sum up duration</span>
+    $✌--animation-timeline-duration: 0s !global;    
+
+    <span>//  global context map to hold animation tweens</span>
+    $✌--animation-timeline-tweens  : () !global;
+
+    <span>//  mixin content (the included tweens)</span>
+    @content;
+
+    <span>//  animation name and duration 
+    //  note! if no name is provided a unique id will be used
+    //  this allows you to create one-time-use animations without
+    //  having to deal with animation naming conflicts :-)</span>     
+    animation-name:     $name;
+    animation-duration: $✌--animation-timeline-duration;
+
+    <span>//  create keyframes if duration is more than 0s</$span>
+    @if $✌--animation-timeline-duration > 0s {
+        @keyframes #{$name} {
+            <span>//  loop through the included tweens </span>
+            @each $time, $props in $✌--animation-timeline-tweens {
+                <span>//  calculate percentage based on total duration</span>
+                #{percentage($time/$✌--animation-timeline-duration)}{ 
+                    <span>//  print out the tween properties</span>
+                    @each $prop, $value in $props {
+                        #{$prop}:$value;
+                    }
+                }
+            }
+        }
+    }
+
+    <span>//  reset global context flags</span>
+    $✌--animation-timeline-duration: null !global;
+    $✌--animation-timeline-tweens  : null !global;
+}
+
+
+<span>//  mixin to create tweens based on a delay and a map
+//  containing the the tween properties*
+//
+//  * using a map is not optimal – but for now you are not 
+//  able to save @content to variables :( 
+//</span>  
+@mixin tween($delay: 0s, $props: null){
+    <span>//  only do stuff if we are in a animation-timeline context</span>
+    @if $✌--animation-timeline-tweens {
+        <span>//  increment the total animation duration by the the tween delay </span>
+        $✌--animation-timeline-duration: $✌--animation-timeline-duration + $delay !global;
+        <span>//  save current duration and tween props to the global tween map</span>
+        $✌--animation-timeline-tweens: map-merge($✌--animation-timeline-tweens, ($✌--animation-timeline-duration: $props)) !global;
+    }
+}
+</pre>
