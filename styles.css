@@ -1,0 +1,214 @@
+body {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: ur1pyom;
+          animation-name: ur1pyom;
+  -webkit-animation-duration: 18s;
+          animation-duration: 18s;
+}
+@-webkit-keyframes ur1pyom {
+  0% {
+    background-color: blueviolet;
+    color: blueviolet;
+  }
+  16.6666666667% {
+    background-color: red;
+    color: red;
+  }
+  33.3333333333% {
+    background-color: orange;
+    color: orange;
+  }
+  50% {
+    background-color: gold;
+    color: gold;
+  }
+  66.6666666667% {
+    background-color: green;
+    color: green;
+  }
+  83.3333333333% {
+    background-color: blue;
+    color: blue;
+  }
+  100% {
+    background-color: blueviolet;
+    color: blueviolet;
+  }
+}
+@keyframes ur1pyom {
+  0% {
+    background-color: blueviolet;
+    color: blueviolet;
+  }
+  16.6666666667% {
+    background-color: red;
+    color: red;
+  }
+  33.3333333333% {
+    background-color: orange;
+    color: orange;
+  }
+  50% {
+    background-color: gold;
+    color: gold;
+  }
+  66.6666666667% {
+    background-color: green;
+    color: green;
+  }
+  83.3333333333% {
+    background-color: blue;
+    color: blue;
+  }
+  100% {
+    background-color: blueviolet;
+    color: blueviolet;
+  }
+}
+
+.hearts {
+  overflow: hidden;
+  height: 6em;
+}
+.hearts i {
+  font-size: 4em;
+  display: block;
+  line-height: 1.5;
+  margin: 0;
+  font-style: normal;
+  text-align: center;
+}
+.hearts span {
+  position: relative;
+  display: block;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: hearts;
+          animation-name: hearts;
+  -webkit-animation-duration: 18.0001s;
+          animation-duration: 18.0001s;
+}
+@-webkit-keyframes hearts {
+  3.3333148149% {
+    transform: translatey(-14.2857142857%);
+  }
+  16.6665740746% {
+    transform: translatey(-14.2857142857%);
+  }
+  19.9998888895% {
+    transform: translatey(-28.5714285714%);
+  }
+  33.3331481492% {
+    transform: translatey(-28.5714285714%);
+  }
+  36.6664629641% {
+    transform: translatey(-42.8571428571%);
+  }
+  49.9997222238% {
+    transform: translatey(-42.8571428571%);
+  }
+  53.3330370387% {
+    transform: translatey(-57.1428571429%);
+  }
+  66.6662962984% {
+    transform: translatey(-57.1428571429%);
+  }
+  69.9996111133% {
+    transform: translatey(-71.4285714286%);
+  }
+  83.3328703729% {
+    transform: translatey(-71.4285714286%);
+  }
+  86.6661851879% {
+    transform: translatey(-85.7142857143%);
+  }
+  99.9994444475% {
+    transform: translatey(-85.7142857143%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
+}
+@keyframes hearts {
+  3.3333148149% {
+    transform: translatey(-14.2857142857%);
+  }
+  16.6665740746% {
+    transform: translatey(-14.2857142857%);
+  }
+  19.9998888895% {
+    transform: translatey(-28.5714285714%);
+  }
+  33.3331481492% {
+    transform: translatey(-28.5714285714%);
+  }
+  36.6664629641% {
+    transform: translatey(-42.8571428571%);
+  }
+  49.9997222238% {
+    transform: translatey(-42.8571428571%);
+  }
+  53.3330370387% {
+    transform: translatey(-57.1428571429%);
+  }
+  66.6662962984% {
+    transform: translatey(-57.1428571429%);
+  }
+  69.9996111133% {
+    transform: translatey(-71.4285714286%);
+  }
+  83.3328703729% {
+    transform: translatey(-71.4285714286%);
+  }
+  86.6661851879% {
+    transform: translatey(-85.7142857143%);
+  }
+  99.9994444475% {
+    transform: translatey(-85.7142857143%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1em;
+  color: inherit;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+h1 {
+  font: 400 24px sans-serif;
+  margin-bottom: 0;
+}
+
+p {
+  font: 400 16px sans-serif;
+}
+
+pre {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1em;
+  color: black;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+pre span {
+  opacity: 0.7;
+}
